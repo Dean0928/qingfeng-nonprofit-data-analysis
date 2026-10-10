@@ -39,6 +39,27 @@ class TestCLI:
     def test_sql_list_runs(self, cfg):
         assert cli_main(["--config", str(cfg.source_path), "sql"]) == 0
 
+    @pytest.mark.parametrize("ref", ["03_kpi_queries.sql", "sql/03_kpi_queries.sql"])
+    def test_sql_file_path_resolution(self, cfg, ref):
+        """回归测试：``--file`` 既支持相对 sql/ 的写法，也支持相对仓库根的写法。
+
+        CI 曾因只做一次路径拼接，把 ``sql/03_kpi_queries.sql`` 解析成
+        ``sql/sql/03_kpi_queries.sql`` 而失败。
+        """
+        from qingfeng.warehouse import resolve_sql_path
+
+        p = resolve_sql_path(cfg, ref)
+        assert p.is_file(), f"{ref} 未能解析到真实文件"
+        assert p.name == "03_kpi_queries.sql"
+
+    def test_run_sql_file_executes_all_statements(self, cfg):
+        from qingfeng.warehouse import run_sql_file
+
+        results = run_sql_file(cfg, "sql/03_kpi_queries.sql")
+        assert len(results) >= 15
+        for label, df in results:
+            assert "error" not in df.columns, f"语句执行失败：{label} -> {df.to_dict()}"
+
     def test_verify_exit_code_semantics(self, cfg):
         from qingfeng.pipeline import verify_pipeline
 

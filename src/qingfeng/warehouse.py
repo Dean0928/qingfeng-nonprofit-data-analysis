@@ -173,11 +173,31 @@ def split_sql_statements(text: str) -> list[tuple[str, str]]:
     return statements
 
 
+def resolve_sql_path(cfg: Config, path: str | Path) -> Path:
+    """把用户给的 SQL 路径解析为真实文件。
+
+    ``--file`` 参数既可能写成 ``03_kpi_queries.sql``（相对 ``sql/``），
+    也可能写成 ``sql/03_kpi_queries.sql``（相对仓库根目录）。
+    只做一次简单拼接会把后者解析成 ``sql/sql/...`` 而报"文件不存在"，
+    因此这里按候选顺序逐个探测，全部失败时才报错。
+    """
+    p = Path(path)
+    if p.is_absolute():
+        if p.is_file():
+            return p
+        raise FileNotFoundError(f"SQL 文件不存在：{p}")
+    for candidate in (cfg.paths.sql / p, cfg.paths.root / p, Path.cwd() / p):
+        if candidate.is_file():
+            return candidate
+    raise FileNotFoundError(
+        f"找不到 SQL 文件 {path}；已尝试："
+        + ", ".join(str(c) for c in (cfg.paths.sql / p, cfg.paths.root / p, Path.cwd() / p))
+    )
+
+
 def run_sql_file(cfg: Config, path: str | Path) -> list[tuple[str, pd.DataFrame]]:
     """执行一个 ``.sql`` 文件，返回 [(语句标签, 结果表), ...]。"""
-    p = Path(path)
-    if not p.is_absolute():
-        p = cfg.paths.sql / p
+    p = resolve_sql_path(cfg, path)
     text = p.read_text(encoding="utf-8")
 
     results: list[tuple[str, pd.DataFrame]] = []

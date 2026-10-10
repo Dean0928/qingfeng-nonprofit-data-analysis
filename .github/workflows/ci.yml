@@ -13,6 +13,8 @@ concurrency:
 env:
   PYTHONUNBUFFERED: "1"
   MPLBACKEND: Agg
+  PYTHONPATH: ${{ github.workspace }}/src
+  MPLCONFIGDIR: ${{ github.workspace }}/.cache/matplotlib
 
 jobs:
   pipeline:
@@ -56,9 +58,12 @@ jobs:
 
       - name: 执行全部 SQL 查询（验证 SQL 层可用）
         run: |
-          python -m qingfeng.cli sql --file sql/03_kpi_queries.sql > /tmp/kpi_sql.log
+          # 优先用仓库自带的验证器：逐条执行并产出可提交的验证日志
+          python scripts/verify_sql.py
+          # 同时冒烟测试 CLI 的 sql 子命令，确认两种路径写法都能解析
+          python -m qingfeng.cli sql --file 03_kpi_queries.sql > /tmp/kpi_sql.log
           python -m qingfeng.cli sql --file sql/04_analysis_queries.sql > /tmp/analysis_sql.log
-          echo "SQL 层执行通过"
+          echo "SQL 层执行通过（$(grep -c '\[PASS\]' reports/sql_verification.log) 条语句）"
 
       - name: 确认关键产物已生成
         run: |
