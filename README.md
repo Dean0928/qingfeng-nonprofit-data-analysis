@@ -4,7 +4,7 @@
 
 **从多源脏数据到可执行运营决策的完整数据管道**
 
-[![CI](https://github.com/OWNER/qingfeng-nonprofit-data-analysis/actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
+[![CI](https://github.com/Dean0928/qingfeng-nonprofit-data-analysis/actions/workflows/ci.yml/badge.svg)](../../actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
