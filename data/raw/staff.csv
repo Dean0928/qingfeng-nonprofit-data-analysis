@@ -1,0 +1,15 @@
+﻿staff_id,staff_name,role,gender,ethnicity,hire_date,office_county,email,is_full_time
+ST-001,赵琳小英,社工,女,汉族,2025-12-10,香格里拉市,staff001@qingfeng-youth.org.cn,True
+ST-002,格桑,财务专员,男,藏族,2019-08-30,维西傈僳族自治县,staff002@qingfeng-youth.org.cn,True
+ST-003,沙英文华,传播专员,女,彝族,2019-10-31,香格里拉市,staff003@qingfeng-youth.org.cn,True
+ST-004,王芳晓东,项目专员,女,纳西族,2019-06-16,香格里拉市,staff004@qingfeng-youth.org.cn,True
+ST-005,木生,实习生,男,傈僳族,2024-03-21,香格里拉市,staff005@qingfeng-youth.org.cn,False
+ST-006,雀文,项目专员,男,傈僳族,2021-07-23,香格里拉市,staff006@qingfeng-youth.org.cn,True
+ST-007,阿依小英,社工,女,彝族,2025-09-18,香格里拉市,staff007@qingfeng-youth.org.cn,True
+ST-008,杨柳文华,项目专员,女,汉族,2019-04-03,香格里拉市,staff008@qingfeng-youth.org.cn,True
+ST-009,马兰,社工,女,普米族,2019-02-19,维西傈僳族自治县,staff009@qingfeng-youth.org.cn,True
+ST-010,向巴,传播专员,男,藏族,2024-10-10,香格里拉市,staff010@qingfeng-youth.org.cn,True
+ST-011,和顺,总干事,男,傈僳族,2022-08-16,香格里拉市,staff011@qingfeng-youth.org.cn,True
+ST-012,雀文,项目专员,男,傈僳族,2023-07-19,香格里拉市,staff012@qingfeng-youth.org.cn,True
+ST-013,吴瑕,总干事,女,汉族,2026-01-18,香格里拉市,staff013@qingfeng-youth.org.cn,True
+ST-014,拉珍,财务专员,女,藏族,2024-09-18,香格里拉市,staff014@qingfeng-youth.org.cn,True

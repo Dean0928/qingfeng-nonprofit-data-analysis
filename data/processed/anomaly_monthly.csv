@@ -1,0 +1,5 @@
+﻿年月,zscore,modified_zscore,iqr,trend_resid,stl_resid,iforest,投票数,是否异常,判定方法,指标,观测值,稳健Z分数,偏离中位数,方向
+2025-12,False,False,False,False,True,True,2,True,STL 残差+孤立森林,志愿服务时长,1275.9966666666667,-0.5580892290250917,-0.3174845996808501,偏低
+2025-12,False,False,False,True,True,True,3,True,去趋势 Z 分数+STL 残差+孤立森林,活跃志愿者数,263.0,-0.3651938918713057,-0.15705128205128205,偏低
+2026-03,True,True,True,True,False,True,5,True,3σ 准则+稳健 Z 分数(MAD)+Tukey 箱线+去趋势 Z 分数+孤立森林,预算执行率,0.792212420625134,-4.065422053169487,-0.14596665468351053,偏低
+2026-05,True,True,True,True,True,True,6,True,3σ 准则+稳健 Z 分数(MAD)+Tukey 箱线+去趋势 Z 分数+STL 残差+孤立森林,现金捐赠额,1408192.01,14.580572337549022,2.817722920856558,偏高

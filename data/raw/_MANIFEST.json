@@ -1,0 +1,114 @@
+{
+  "generator": "scripts/generate_synthetic_data.py",
+  "seed": 20260601,
+  "config_file": "/Users/isakyaki/Documents/deepseek-harness/default-workspace/qingfeng-nonprofit-data-analysis/config/config.yaml",
+  "date_window": [
+    "2024-01-01",
+    "2026-06-30"
+  ],
+  "python": "3.13.9",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "pandas": "2.3.3",
+  "numpy": "2.3.5",
+  "tables": [
+    {
+      "table": "projects",
+      "file": "projects.csv",
+      "rows": 54,
+      "columns": 16,
+      "bytes": 13088,
+      "sha256_16": "f41b8c6097f2875c"
+    },
+    {
+      "table": "staff",
+      "file": "staff.csv",
+      "rows": 14,
+      "columns": 9,
+      "bytes": 1542,
+      "sha256_16": "6c37b6b3c78605ab"
+    },
+    {
+      "table": "volunteers",
+      "file": "volunteers.csv",
+      "rows": 3762,
+      "columns": 13,
+      "bytes": 515387,
+      "sha256_16": "e2f459ea1d19a492"
+    },
+    {
+      "table": "volunteer_shifts",
+      "file": "volunteer_shifts.csv",
+      "rows": 13492,
+      "columns": 8,
+      "bytes": 1260167,
+      "sha256_16": "75760d6b12e9e7b0"
+    },
+    {
+      "table": "donors",
+      "file": "donors.csv",
+      "rows": 5434,
+      "columns": 7,
+      "bytes": 389567,
+      "sha256_16": "33358c7639f0bce3"
+    },
+    {
+      "table": "donations",
+      "file": "donations.csv",
+      "rows": 21370,
+      "columns": 8,
+      "bytes": 1506965,
+      "sha256_16": "ba785e6e3dff20d5"
+    },
+    {
+      "table": "in_kind_donations",
+      "file": "in_kind_donations.csv",
+      "rows": 648,
+      "columns": 11,
+      "bytes": 66885,
+      "sha256_16": "68a99e6477d854e0"
+    },
+    {
+      "table": "beneficiaries",
+      "file": "beneficiaries.csv",
+      "rows": 5434,
+      "columns": 11,
+      "bytes": 587293,
+      "sha256_16": "7128519800a1d2fc"
+    },
+    {
+      "table": "beneficiary_services",
+      "file": "beneficiary_services.csv",
+      "rows": 17181,
+      "columns": 10,
+      "bytes": 1686526,
+      "sha256_16": "6203e662a9318e39"
+    },
+    {
+      "table": "monthly_budget_execution",
+      "file": "monthly_budget_execution.csv",
+      "rows": 3994,
+      "columns": 5,
+      "bytes": 185985,
+      "sha256_16": "8c2b16e38435518e"
+    },
+    {
+      "table": "satisfaction_survey_raw",
+      "file": "satisfaction_survey_raw.csv",
+      "rows": 1515,
+      "columns": 11,
+      "bytes": 204438,
+      "sha256_16": "d5b7fdb8672ba5ed"
+    }
+  ],
+  "injected_defects_by_type": {
+    "whitespace_or_widechar": 8005,
+    "missing_value": 6277,
+    "malformed_date": 3587,
+    "duplicate_row": 3138,
+    "extreme_outlier": 1008,
+    "unit_inconsistency": 947,
+    "orphan_foreign_key": 399
+  },
+  "planted_anomalies": 6,
+  "disclaimer": "本目录下所有数据均为程序生成的模拟数据，与任何真实个人或机构无关，不得作为真实统计口径引用。分布参数依据 data/external/calibration_reference.md 校准。"
+}

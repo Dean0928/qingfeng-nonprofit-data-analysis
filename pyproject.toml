@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qingfeng-analytics"
+version = "1.0.0"
+description = "迪庆清风青年公益联合会 公益项目数据运营分析（可复现数据管道 + 指标体系 + 异常归因）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Qingfeng Youth Public Welfare Association - Data Team" }]
+keywords = ["data-analysis", "nonprofit", "public-welfare", "pandas", "sql", "kpi"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Intended Audience :: Science/Research",
+]
+
+dependencies = [
+  "pandas>=2.0",
+  "numpy>=1.24",
+  "matplotlib>=3.7",
+  "seaborn>=0.12",
+  "scipy>=1.10",
+  "scikit-learn>=1.3",
+  "statsmodels>=0.14",
+  "sqlalchemy>=2.0",
+  "PyYAML>=6.0",
+  "openpyxl>=3.1",
+  "Jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.4", "jupyter>=1.0", "nbformat>=5.9"]
+report = ["markdown>=3.5"]
+
+[project.scripts]
+qingfeng = "qingfeng.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+qingfeng = ["templates/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers -m 'not slow'"
+markers = [
+  "slow: 端到端冒烟测试，默认不执行（用 pytest -m slow 开启）",
+]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501", "B008"]

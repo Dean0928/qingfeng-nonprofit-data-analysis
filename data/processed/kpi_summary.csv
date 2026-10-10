@@ -1,0 +1,34 @@
+﻿指标代码,指标名称,指标层级,指标值,单位,目标值,评价方向,状态,口径公式,数据来源,说明
+SCALE-01,在册公益项目数,规模层,52.0,个,,越高越好,—,COUNT(DISTINCT project_key)，排除 UNKNOWN,dim_project,
+SCALE-02,在办项目数（进行中+筹备中）,规模层,9.0,个,,越高越好,—,"COUNT(*) WHERE status IN ('进行中','筹备中')",dim_project,
+SCALE-03,注册志愿者总数,规模层,3600.0,人,,越高越好,—,COUNT(DISTINCT volunteer_key)，排除 UNKNOWN,dim_volunteer,
+SCALE-04,志愿服务总时长,规模层,52536.246666666666,小时,,越高越好,—,SUM(hours),fact_volunteer_service,
+SCALE-05,志愿服务经济价值,规模层,1576087.4000000001,元,,越高越好,—,SUM(hours) × 30 元/小时,fact_volunteer_service,折算率由《慈善蓝皮书(2025)》口径反推，非官方公布值
+SCALE-06,现金捐赠总额,规模层,12214689.65,元,,越高越好,—,SUM(amount_cny),fact_donation,
+SCALE-07,物资捐赠折价总额,规模层,7503575.49,元,,越高越好,—,SUM(est_total_value_cny),fact_in_kind,
+SCALE-08,建档服务对象数,规模层,5140.0,人,,越高越好,—,COUNT(DISTINCT beneficiary_key)，排除 UNKNOWN,dim_beneficiary,
+SCALE-09,服务提供总人次,规模层,16137.0,人次,,越高越好,—,COUNT(*),fact_beneficiary_service,
+ENG-01,活跃志愿者数,活跃层,950.0,人,,越高越好,—,COUNT(DISTINCT volunteer_key) WHERE 服务记录数 >= 1,fact_volunteer_service,
+ENG-02,志愿者活跃率,活跃层,0.2638888888888889,比例,0.3,越高越好,关注,活跃志愿者数 / 注册志愿者总数,"fact_volunteer_service, dim_volunteer",校准基线 28.72%（《慈善蓝皮书(2025)》全国活跃志愿者占比）
+ENG-03,人均服务时长,活跃层,55.30131228070175,小时/人,,越高越好,—,服务总时长 / 活跃志愿者数,fact_volunteer_service,
+ENG-04,人均服务次数,活跃层,13.457894736842105,次/人,,越高越好,—,服务总人次 / 活跃志愿者数,fact_volunteer_service,
+ENG-05,服务对象复访率,活跃层,0.797386895475819,比例,,越高越好,—,服务次数≥2 的服务对象数 / 有服务记录的对象数,fact_beneficiary_service,
+ENG-06,志愿者一年留存率,活跃层,0.2393635420269803,比例,,越高越好,—,注册满 12 个月且近 6 个月仍有服务的人数 / 注册满 12 个月人数,"dim_volunteer, fact_volunteer_service",
+EFF-01,单位服务成本,效率层,1055.229643676024,元/人次,,越低越好,—,项目实际支出总额 / 服务提供总人次,"fact_project_monthly, fact_beneficiary_service",
+EFF-02,每小时服务成本,效率层,321.6929958455187,元/小时,,越低越好,—,项目实际支出总额 / 志愿服务总时长,"fact_project_monthly, fact_volunteer_service",
+EFF-03,捐赠撬动服务时长,效率层,43.335692391769726,小时/万元,,越高越好,—,志愿服务总时长 / 现金捐赠总额 × 10000,"fact_volunteer_service, fact_donation",衡量当现金捐赠收缩时，志愿时长能否补位
+EFF-04,单项目平均支出,效率层,327466.16846153844,元/个,,中性,—,项目实际支出总额 / 有支出的项目数,fact_project_monthly,
+QUA-01,服务满意度均值,质量层,4.279647374472979,分（1-5）,4.5,越高越好,关注,AVG(satisfaction_score)，剔除越界值,fact_beneficiary_service,
+QUA-02,满意度达标率（≥4 分）,质量层,0.7093394659511946,比例,,越高越好,—,满意度 ≥ 4 的记录数 / 有效评分记录数,fact_beneficiary_service,
+QUA-03,项目预算执行率,质量层,0.9310374152817685,比例,0.95,越高越好,关注,SUM(actual_cny) / SUM(planned_cny),fact_project_monthly,
+QUA-04,项目按期结项率,质量层,0.6410256410256411,比例,,越高越好,—,实际结束不晚于计划结束的已结项项目数 / 已结项项目数,dim_project,
+QUA-05,单次服务时长中位数,质量层,3.44,小时,,中性,—,MEDIAN(hours),fact_volunteer_service,
+QUA-06,需跟进的服务占比,质量层,0.315238272293487,比例,,越低越好,—,followup_needed = 1 的记录数 / 服务总人次,fact_beneficiary_service,
+STR-01,捐赠来源集中度 HHI,结构层,0.010271013923732798,指数,0.15,越低越好,达标,SUM((单个捐赠人金额 / 捐赠总额)²),"fact_donation, dim_donor",> 0.25 说明收入过度依赖少数大额捐赠人，抗风险能力弱
+STR-02,机构捐赠金额占比,结构层,0.5632663837676792,比例,,中性,—,企业+基金会+政府+社会组织捐赠额 / 捐赠总额,"fact_donation, dim_donor",
+STR-03,前 10 大捐赠人金额占比,结构层,0.2612369737940906,比例,,越低越好,—,金额前 10 名捐赠人合计 / 捐赠总额,fact_donation,
+STR-04,帕累托集中度（前 20% 捐赠人）,结构层,0.7735999059951555,比例,,中性,—,金额前 20% 捐赠人合计 / 捐赠总额,fact_donation,
+STR-05,双语志愿者占比,结构层,0.2013888888888889,比例,,越高越好,—,掌握藏汉双语或傈僳语翻译技能的志愿者数 / 注册志愿者数,dim_volunteer,民族地区服务可达性的关键约束指标
+DQ-01,数据完整性,数据层,0.9967965582767392,比例,0.99,越高越好,达标,1 - 缺失单元格数 / 总单元格数,星型模型 + 清洗结果,
+DQ-02,修正记录率,数据层,0.007344990104666109,比例,,越低越好,—,被截断/置缺修正的事实记录数 / 事实记录总数,fact_* ，is_corrected 标记,
+DQ-03,悬空外键记录率,数据层,0.011649970416012078,比例,,越低越好,—,维度键无法匹配的记录数 / 事实记录总数,fact_* ，has_orphan_key 标记,

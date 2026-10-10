@@ -1,0 +1,37 @@
+indicator_code,indicator_name,indicator_name_en,value,unit,year,scope,source_name,source_url,note
+POP_DIQING_RESIDENT,迪庆州常住人口,Resident population of Diqing,39.5,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,2025年末
+POP_DIQING_REGISTERED,迪庆州户籍人口,Registered population of Diqing,37.2345,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,2025年末
+POP_DIQING_ETHNIC_SHARE,少数民族人口占比,Share of ethnic minority population,0.895,ratio,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,户籍人口口径
+POP_DIQING_TIBETAN,藏族人口,Tibetan population,13.5252,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,占总人口36.3%
+POP_DIQING_LISU,傈僳族人口,Lisu population,11.2451,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,占总人口30.2%
+POP_DIQING_NAXI,纳西族人口,Naxi population,4.6658,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,占总人口12.5%
+POP_DIQING_YI,彝族人口,Yi population,1.7407,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,千人以上少数民族
+POP_DIQING_BAI,白族人口,Bai population,1.5143,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,千人以上少数民族
+POP_DIQING_PUMI,普米族人口,Pumi population,0.2436,万人,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,千人以上少数民族
+POP_DIQING_URBAN_RATE,人口城镇化率,Urbanization rate,0.3752,ratio,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,
+POP_DIQING_BIRTH_RATE,人口出生率,Crude birth rate,5.57,‰,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,
+POP_DIQING_DEATH_RATE,人口死亡率,Crude death rate,6.58,‰,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,
+POP_DIQING_GROWTH_RATE,人口自然增长率,Natural growth rate,-1.01,‰,2025,迪庆藏族自治州,迪庆州人民政府·人口和民族,https://diqing.gov.cn/dqgk/rkhmz.html,负增长
+ECO_DIQING_GDP,迪庆州GDP,GDP of Diqing,316.65,亿元,2025,迪庆藏族自治州,红黑人口库·迪庆州,https://www.hongheiku.com/shijirenkou/2152.html,引自州统计公报
+ECO_DIQING_INCOME_URBAN,城镇居民人均可支配收入,Urban disposable income per capita,48999,元,2025,迪庆藏族自治州,红黑人口库·迪庆州,https://www.hongheiku.com/shijirenkou/2152.html,引自州统计公报
+ECO_DIQING_INCOME_RURAL,农村居民人均可支配收入,Rural disposable income per capita,15640,元,2025,迪庆藏族自治州,红黑人口库·迪庆州,https://www.hongheiku.com/shijirenkou/2152.html,引自州统计公报
+GEO_DIQING_AREA,迪庆州面积,Area of Diqing,23185.67,km2,2025,迪庆藏族自治州,红黑人口库·迪庆州,https://www.hongheiku.com/shijirenkou/2152.html,
+GEO_DIQING_DENSITY,人口密度,Population density,16.82,人/km2,2025,迪庆藏族自治州,红黑人口库·迪庆州,https://www.hongheiku.com/shijirenkou/2152.html,非官方测算
+CEN_RESOURCE_TOTAL,全国社会公益资源总量,National public welfare resource total,5235,亿元,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+11.74%
+CEN_DONATION_TOTAL,社会捐赠总量,Total social donation,1260,亿元,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比-8.70%
+CEN_VOLUNTEER_VALUE,志愿服务贡献价值,Volunteer service contributed value,2371,亿元,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+32.38%
+CEN_LOTTERY_FUND,彩票公益金总量,Lottery public welfare fund,1604,亿元,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+5.94%
+VOL_TOTAL,全国志愿者总数,Total volunteers,26822,万人,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+0.3%
+VOL_ACTIVE,全国活跃志愿者数量,Active volunteers,7704,万人,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+0.6%
+VOL_ACTIVE_RATE,活跃志愿者占比,Active volunteer share,0.2872,ratio,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,7704/26822 计算值
+VOL_VALUE_PER_ACTIVE,人均志愿服务贡献价值,Contributed value per active volunteer,3078,元/人·年,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,2371.46亿/7704万 推导值
+VOL_HOUR_VALUE,志愿服务时间折算价值,Implied value per volunteer hour,30.8,元/小时,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,按人均年100小时反推的推导值
+CEN_CHARITY_ORG,民政部门认定慈善组织,Recognized charity organizations,15671,个,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+9.95%
+CEN_SOCIAL_ORG,社会组织总量,Total social organizations,87.18,万个,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比-1.11%
+CEN_SOCIAL_GROUP,社会团体,Social associations,38.1,万个,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+2.14%
+CEN_FOUNDATION,基金会,Foundations,9814,个,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+2.05%
+CEN_SERVICE_ORG,民办非企业单位,Private non-enterprise units,48.1,万个,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比-3.61%
+CEN_CHARITY_TRUST_N,慈善信托累计备案数量,Charitable trusts filed,2244,单,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+35.59%
+CEN_CHARITY_TRUST_V,慈善信托累计财产规模,Charitable trust assets,85.07,亿元,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,同比+30.48%
+CEN_VOL_INDEX,中国志愿服务发展指数,China volunteer service development index,112.90,index,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,较2023年+12.90%
+CEN_RURAL_REVITALIZATION_ORG,参与乡村振兴的社会组织,Social organizations in rural revitalization,20.4,万家,2024,全国,慈善蓝皮书2025,http://www.gongyishibao.com/html/yanjiubaogao/2026/03/32719.html,基金会3901个/+16.45%

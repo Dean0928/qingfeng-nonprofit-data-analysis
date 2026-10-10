@@ -1,0 +1,12 @@
+﻿table,rows,columns
+fact_donation,19988,15
+fact_beneficiary_service,16137,16
+fact_volunteer_service,12888,15
+dim_donor,5201,12
+dim_beneficiary,5141,19
+fact_project_monthly,3762,14
+dim_volunteer,3601,20
+dim_date,912,16
+fact_in_kind,612,16
+dim_project,53,25
+dim_geography,23,7

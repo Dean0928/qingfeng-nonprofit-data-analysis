@@ -1,0 +1,12 @@
+﻿table,rules,weighted_pass_rate,errors,warnings
+volunteer_shifts,11,0.9389770731707318,1,1
+projects,9,0.9970413846153847,1,0
+beneficiaries,7,1.0,0,0
+beneficiary_services,9,1.0,0,0
+donations,8,1.0,0,0
+donors,4,1.0,0,0
+in_kind_donations,5,1.0,0,0
+monthly_budget_execution,5,1.0,0,0
+satisfaction_survey_raw,5,1.0,0,0
+staff,3,1.0,0,0
+volunteers,9,1.0,0,0

@@ -1,0 +1,12 @@
+﻿table,table_type,rows,columns,grain
+dim_date,维度表,912,16,
+dim_project,维度表,53,25,
+dim_volunteer,维度表,3601,20,
+dim_beneficiary,维度表,5141,19,
+dim_donor,维度表,5201,12,
+dim_geography,维度表,23,7,
+fact_volunteer_service,事实表,12888,15,
+fact_donation,事实表,19988,15,
+fact_in_kind,事实表,612,16,
+fact_beneficiary_service,事实表,16137,16,
+fact_project_monthly,事实表,3762,14,

@@ -1,0 +1,19 @@
+# 运行完整管道（make data / make analyze / make report）所需依赖
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+seaborn>=0.12
+scipy>=1.10
+scikit-learn>=1.3
+statsmodels>=0.14
+SQLAlchemy>=2.0
+PyYAML>=6.0
+openpyxl>=3.1
+Jinja2>=3.1
+
+# 开发/复现 notebook 与测试
+pytest>=7.4
+pytest-cov>=4.1
+ruff>=0.4
+jupyter>=1.0
+nbformat>=5.9

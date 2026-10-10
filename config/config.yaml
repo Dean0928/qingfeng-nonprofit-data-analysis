@@ -1,0 +1,123 @@
+# =============================================================================
+# 迪庆清风青年公益联合会 · 公益项目数据运营分析  —— 全局配置
+# 所有路径相对于仓库根目录；修改本文件即可复现不同参数下的完整管道。
+# =============================================================================
+
+project:
+  name: "迪庆清风青年公益联合会"
+  short_name: "清风青联"
+  region: "云南省迪庆藏族自治州"
+  internship_window: ["2026-06-01", "2026-08-31"]
+
+paths:
+  raw: "data/raw"
+  interim: "data/interim"
+  processed: "data/processed"
+  external: "data/external"
+  reports: "reports"
+  figures: "reports/figures"
+  warehouse: "data/processed/qingfeng.sqlite"
+
+# -----------------------------------------------------------------------------
+# 数据模拟参数：用于 scripts/generate_synthetic_data.py
+# 分布参数均由 data/external/calibration_reference.md 中的公开统计口径校准。
+# -----------------------------------------------------------------------------
+simulation:
+  seed: 20260601                 # 固定随机种子 -> 完全可复现
+  # 数据覆盖窗口：2024-01-01 起，截止到实习开始前的最近完整月末
+  start_date: "2024-01-01"
+  as_of_date: "2026-06-30"
+  n_volunteers: 3600             # 注册志愿者规模（州域青年公益组织量级）
+  n_projects: 52                 # 两年半内在册项目数
+  n_beneficiaries: 5200          # 建档服务对象
+  n_donors: 5200                 # 捐赠人（个人 + 机构）
+  n_staff: 14                    # 项目专员 / 专职人员
+  # 志愿者活跃率目标：校准自《慈善蓝皮书(2025)》全国活跃志愿者占比 28.72%
+  active_volunteer_rate: [0.26, 0.32]
+  # 服务时长（小时/次）：对数正态，中位数约 3.2h
+  shift_hours_lognorm: { mean: 1.15, sigma: 0.62, clip: [0.5, 12.0] }
+  # 单个活跃志愿者在观察窗口内的参与次数
+  shifts_per_active_volunteer: { mean: 14.0, sigma: 4.5, min: 1, max: 80 }
+  # 捐赠金额（元）：对数正态，个人小额为主
+  # 捐赠金额（元）：对数正态。个人小额为主，机构笔数少但金额大。
+  # 标定目标：2.5 年现金捐赠 ≈ 1000 万元（≈ 400 万元/年，州域草根组织量级），
+  # 结构 ≈ 个人 40% / 企业 25% / 基金会 20% / 政府 12% / 社会组织 3%。
+  donation_lognorm: { individual: { mean: 4.916, sigma: 1.10 },
+                      corporate:  { mean: 7.363, sigma: 1.00 },
+                      foundation: { mean: 9.073, sigma: 0.80 },
+                      government: { mean: 10.534, sigma: 0.60 } }
+  # 每位捐赠人的年度捐赠频次（与其有效在职时长成正比，保证「年化捐赠率」稳定）
+  donations_per_year: { individual: 1.6, corporate: 2.2, foundation: 2.5,
+                        government: 2.5, social: 2.5 }
+  # 服务价值折算率（元/小时）：由全国志愿服务贡献价值 ÷ 估算总时长反推
+  volunteer_hour_value_cny: 30.0
+
+# -----------------------------------------------------------------------------
+# 数据质量：故意注入的"脏数据"比例，用于验证清洗与校验模块
+# -----------------------------------------------------------------------------
+data_quality:
+  duplicate_rate: 0.045          # 重复签到记录
+  missing_rate: 0.030            # 关键字段缺失
+  malformed_date_rate: 0.055     # 日期格式不统一
+  unit_inconsistency_rate: 0.070 # "3h" / "180min" / "3.0" 混用
+  outlier_rate: 0.012            # 极端时长 / 负金额 / 未来日期
+  orphan_key_rate: 0.008         # 外键悬空
+  whitespace_rate: 0.090         # 前后空格 + 全角字符
+
+# -----------------------------------------------------------------------------
+# 分析参数
+# -----------------------------------------------------------------------------
+analysis:
+  trend:
+    freq: "MS"                   # 月度起始频率
+    rolling_window: 3            # 3 个月移动平均
+    stl_period: 6                # STL 季节周期（半年制公益节奏）
+    min_periods: 12              # 趋势分析所需最少月份
+  anomaly:
+    # 水平值方法（zscore/iqr）对趋势型序列不敏感，因此必须搭配
+    # trend_resid（去趋势 Z 分数）与 stl_resid（STL 残差）使用。
+    methods: ["zscore", "iqr", "modified_zscore", "trend_resid", "stl_resid", "iforest"]
+    zscore_threshold: 3.0
+    iqr_multiplier: 1.5
+    modified_z_threshold: 3.5
+    trend_window: 13          # 去趋势 Z 分数的滚动窗口（月）
+    trend_z_threshold: 3.0
+    iforest_contamination: 0.08
+    consensus_min_votes: 2       # 至少 2 种方法一致的才标记为高置信异常
+  cross_tab:
+    alpha: 0.05
+    min_expected_freq: 5
+  kpi:
+    # 指标口径字典（阈值触发预警）
+    thresholds:
+      project_execution_rate: { warn_below: 0.85, target: 0.95 }
+      active_volunteer_rate:  { warn_below: 0.25, target: 0.30 }
+      satisfaction_mean:      { warn_below: 4.00, target: 4.50 }
+      data_completeness:      { warn_below: 0.95, target: 0.99 }
+      donor_concentration_hhi: { warn_above: 0.25, target: 0.15 }
+
+# -----------------------------------------------------------------------------
+# 可视化主题
+# -----------------------------------------------------------------------------
+viz:
+  dpi: 160
+  figure_format: "png"
+  palette: "qingfeng"
+  colors:
+    primary: "#2E6F73"     # 高原青
+    secondary: "#C9752B"   # 藏式赭金
+    accent: "#7B4B94"      # 傈僳紫
+    danger: "#B4483C"
+    neutral: "#6B7A80"
+    grid: "#DDE3E6"
+  font_candidates:
+    - "PingFang SC"
+    - "Hiragino Sans GB"
+    - "Heiti SC"
+    - "Songti SC"
+    - "STHeiti"
+    - "Arial Unicode MS"
+    - "Noto Sans CJK SC"
+    - "SimHei"
+    - "DejaVu Sans"
+  figsize: { wide: [12, 6], square: [9, 7], tall: [11, 9] }

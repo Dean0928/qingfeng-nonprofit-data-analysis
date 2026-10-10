@@ -1,0 +1,47 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.Python
+.venv/
+venv/
+env/
+
+# ---- Tooling caches ----
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# ---- Data ----
+# data/raw 与 data/processed 均提交到仓库，方便直接浏览分析所需的最终数据表；
+# 它们都可从 `make data` 完全复现。data/interim 是中间态，不入库以保持仓库整洁。
+data/interim/*
+!data/interim/.gitkeep
+
+# 由建仓脚本生成的数据库文件（二进制、可复现）
+*.db
+*.sqlite
+*.sqlite3
+
+# ---- Reports ----
+reports/analysis_report.html
+reports/executive_summary.pdf
+reports/*.xlsx
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+.cache/
+.nb_build/
+

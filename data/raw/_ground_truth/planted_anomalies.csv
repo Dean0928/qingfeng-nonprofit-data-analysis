@@ -1,0 +1,7 @@
+﻿anomaly_id,metric,scope,period,direction,magnitude,cause_type,cause,expected_handling
+ANOM-01,volunteer_service_hours,香格里拉市,2026-04,spike,+186%,data_error,签到小程序改版后，将「分钟」误按「小时」写入，个别记录出现 240 小时/次的极端值。,在清洗阶段按物理上限（单次 ≤ 12h）截断并回填，同时记录修正确认单。
+ANOM-02,volunteer_service_hours,德钦县,2026-05,drop,-63%,business_event,G214 白马雪山段连续强降雪导致封路，德钦县 5 月两批入户走访与巡护活动整体取消/延期。,属于不可抗力的真实业务波动，不应修改数据；应在报告中说明并对年度目标做情景调整。
+ANOM-03,donation_amount,全州,2026-05,spike,+412%,business_event,某省外企业通过基金会渠道定向捐赠 85 万元，用于德钦县雪灾应急物资采购，为一次性大额捐赠。,真实事件；需单独披露并计算剔除该笔后的可比口径，避免抬高基线预期。
+ANOM-04,beneficiary_service_count,维西傈僳族自治县,2026-06,spike,+204%,data_error,维西片区社工在纸质台账补录时整表批量重复导入，导致 6 月服务记录翻倍。,在清洗阶段按业务主键去重；这是重复率远高于基线的典型场景。
+ANOM-05,active_volunteer_rate,全州,2025-12,drop,-41%,business_event,冬季严寒叠加虫草/松茸季结束后的外出务工潮，志愿者返乡与流动导致活跃度骤降。,真实季节性；趋势分析应使用 STL 分解剥离季节成分后再判断。
+ANOM-06,project_execution_rate,维西傈僳族自治县,2026-03,drop,-34%,data_error,「乡村电商人才培育」项目 3 月报销单据跨月入账，导致当月实际支出被显著低估。,跨期入账属财务口径问题，应在归因中标注为口径异常而非执行滞后。

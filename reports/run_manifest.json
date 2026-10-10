@@ -1,0 +1,56 @@
+{
+  "org": "迪庆清风青年公益联合会",
+  "seed": 20260601,
+  "window": [
+    "2024-01-01",
+    "2026-06-30"
+  ],
+  "config_file": "config/config.yaml",
+  "star_tables": {
+    "dim_date": 912,
+    "dim_project": 53,
+    "dim_volunteer": 3601,
+    "dim_beneficiary": 5141,
+    "dim_donor": 5201,
+    "dim_geography": 23,
+    "fact_volunteer_service": 12888,
+    "fact_donation": 19988,
+    "fact_in_kind": 612,
+    "fact_beneficiary_service": 16137,
+    "fact_project_monthly": 3762
+  },
+  "kpi_count": 33,
+  "kpi_alerts": [],
+  "kpi_watch": [
+    "志愿者活跃率",
+    "服务满意度均值",
+    "项目预算执行率"
+  ],
+  "anomalies_detected": {
+    "monthly": 4,
+    "county_month": 3
+  },
+  "cleaning_actions": 87,
+  "validation_rules": 75,
+  "validation_failures": 0,
+  "reports": {
+    "kpi_catalog": "reports/kpi_catalog.csv",
+    "report_md": "reports/数据分析报告.md",
+    "executive_summary": "reports/executive_summary.md",
+    "dashboard": "reports/dashboard.html",
+    "data_dictionary": "docs/data_dictionary.md"
+  },
+  "stage_seconds": {
+    "1/10 生成模拟多源数据": 15.813,
+    "2/10 多源数据接入与清单对账": 0.046,
+    "3/10 数据清洗与标准化": 1.433,
+    "4/10 数据质量校验": 0.099,
+    "5/10 构建星型模型": 0.767,
+    "6/10 装入 SQLite 数据仓库": 0.736,
+    "7/10 计算核心指标体系": 0.124,
+    "8/10 描述性统计 / 交叉 / 趋势 / 队列分析": 0.462,
+    "9/10 异常检测与归因": 8.904,
+    "10/11 生成可视化图表": 4.45,
+    "11/11 生成分析报告与数据字典": 1.608
+  }
+}
